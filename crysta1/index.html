@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>crysta1.</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
         body {
             background-color: rgb(10, 10, 10);
@@ -121,12 +122,17 @@
 
         h2 {
             color:white;
-            font-size: large;
+            font-size: small;
             transition: transform 0.1s ease-out;
             position: fixed;
-            top: 60px;
-            left: 40px;
+            top: 45px;
+            user-select: none;
+            left: 42px;
             opacity: 25%;
+        }
+
+        h2.animate-in {
+            animation: fadeIn 1.5s ease-out forwards;
         }
 
 
@@ -173,6 +179,10 @@
 
     <div id="bg-layer"></div>
     <h1 id="title">CRYSTA1</h1>
+
+    <h2 id="state"></h2>
+
+
 <nav id="socials">
     <a href="https://steamcommunity.com/id/schwarzencracker" target="_blank" rel="noopener">
         <img src="steam.png" alt="Steam">
@@ -191,6 +201,8 @@
         const audio = document.getElementById('bg-audio');
         const bg = document.getElementById('bg-layer');
         const title = document.getElementById('title');
+        const socials = document.getElementById('socials');
+        const state = document.getElementById('state');
 
         enterScreen.addEventListener('click', () => {
             audio.volume = 0.6;
@@ -198,6 +210,7 @@
             enterScreen.classList.add('hidden');
             title.classList.add('animate-in');
             socials.classList.add('animate-in');
+            state.classList.add('animate-in');
         });
 
 

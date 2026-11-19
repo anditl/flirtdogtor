@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>flirtdogtor.</title>
+    <title>flirtdogtor</title>
+    <link rel="icon" type="image/png" href="logo.png">
     <style>
         body {
             background-color: rgb(10, 10, 10);
@@ -21,6 +22,18 @@
             left: 50%;
             transform: translateX(-50%);
             font-size: 15px;
+            color: aliceblue;
+            opacity: 20%;
+        }
+
+
+        .ownership {
+            user-select: none;
+            top: 94%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            font-family: sans-serif;
             color: aliceblue;
             opacity: 20%;
         }
@@ -44,7 +57,18 @@
     animation: fadeInUp 1s ease-out 0.5s both;
 }
 
+
+    .unselectable {
+        user-select: none;          /* Standard syntax */
+        -webkit-user-select: none;  /* Safari & Chrome */
+        -moz-user-select: none;     /* Firefox */
+        -ms-user-select: none;      /* Edge/IE */
+        -webkit-user-drag: none;    /* Prevents image ghost-dragging in WebKit */
+        -webkit-touch-callout: none;/* Disables long-press menu on iOS */
+}
+
     .logo img {
+        user-select: none;
     width: 80px;
     height: auto;
     display: block;
@@ -59,8 +83,10 @@
 </head>
 <body>
     <p>mail@flirtdogtor.com</p>
+    <p class="ownership">Made with ❤ · © <span id="year">2026</span> Chilli Vanilli</p>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
     <div class="logo">
-        <img src="logo.png" alt="logo">
+        <img src="logo.png" alt="logo" class="unselectable">
     </div>
 </body>
 </html>
