@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>crysta1.</title>
+    <style>
+        body {
+            background-color: rgb(10, 10, 10);
+            margin: 0;
+            cursor: url('cursor.png'), auto;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+
+
+    #socials {
+    position: fixed;
+    top: 25px;
+    right: 40px;
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+}
+
+    #socials.animate-in {
+    animation: fadeIn 1.5s ease-out 0.2s forwards;
+}
+
+    #socials a {
+    display: inline-flex;
+    cursor: url('cursor.png'), auto; /* Keeps your custom cursor active */
+}
+
+    #socials img {
+    width: 30px;  /* Adjust icon size */
+    height: 30px;
+    filter: brightness(0) invert(1); /* Turns dark logos pure white */
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+    #socials a:hover img {
+    transform: scale(1.12);
+    transform: rotate(-5deg);
+    filter: brightness(0) invert(1) drop-shadow(0 0 12px rgb(255, 255, 255));
+}
+
+
+
+
+
+        #enter-screen {
+            position: fixed;
+            inset: 0; 
+            background-color: rgb(8, 8, 8);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          cursor: url('cursor.png'), auto;
+            transition: opacity 1.2s ease, visibility 1.2s ease;
+        }
+
+        #enter-screen span {
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            user-select: none;
+            transition: color 0.3s ease;
+        }
+
+        #enter-screen:hover span {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        #enter-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+
+        #bg-layer {
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            z-index: -1;
+
+            background-image: url('bg.png');
+            background-size: cover;
+            background-position: center;
+
+            transition: transform 1s ease-out;
+        }
+
+        h1 {
+            color:white;
+            font-size: large;
+            transition: transform 0.1s ease-out;
+            position: fixed;
+            top: 25px;
+            user-select: none;
+            left: 40px;
+            opacity: 25%;
+            font: weight: bold;
+
+        }
+
+        h1.animate-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        
+
+        h2 {
+            color:white;
+            font-size: large;
+            transition: transform 0.1s ease-out;
+            position: fixed;
+            top: 60px;
+            left: 40px;
+            opacity: 25%;
+        }
+
+
+        @keyframes fadeIn {
+                        from {
+                opacity: 0;
+                filter: blur(2px);
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 0.4;
+                filter: blur(0px);
+                transform: translateY(0);
+            }
+        }
+
+
+    #flgr {
+        position: fixed;
+        top: 25px;
+        left: 50%;
+     transform: translateX(-50%);
+    opacity: 75%;
+     display: block;
+    }
+
+    #flgr img {
+    width: 40px;
+    height: auto;
+    display: block;
+    }
+
+    </style>
+</head>
+<body>
+
+    <div id="enter-screen">
+        <span>[ click to enter ]</span>
+    </div>
+
+<a id="flgr" href="https://flirtdogtor.com">
+    <img src="logo.png" alt="Logo">
+</a>
+
+    <div id="bg-layer"></div>
+    <h1 id="title">CRYSTA1</h1>
+<nav id="socials">
+    <a href="https://steamcommunity.com/id/schwarzencracker" target="_blank" rel="noopener">
+        <img src="steam.png" alt="Steam">
+    </a>
+    <a href="https://open.spotify.com/user/317y26pz7bsbejgriqmrpciobliy" target="_blank" rel="noopener">
+        <img src="spotify.png" alt="Spotify">
+    </a>
+</nav>
+
+
+
+    <audio id="bg-audio" src="bgm.mp3" loop></audio>
+    
+    <script>
+        const enterScreen = document.getElementById('enter-screen');
+        const audio = document.getElementById('bg-audio');
+        const bg = document.getElementById('bg-layer');
+        const title = document.getElementById('title');
+
+        enterScreen.addEventListener('click', () => {
+            audio.volume = 0.6;
+            audio.play().catch(err => console.log("Audio Play failed:", err));
+            enterScreen.classList.add('hidden');
+            title.classList.add('animate-in');
+            socials.classList.add('animate-in');
+        });
+
+
+
+        document.addEventListener("mousemove", function(e){
+
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+
+            const offsetX = e.clientX -centerX;
+            const offsetY = e.clientY - centerY;
+
+            bg.style.transform = `translate(${offsetX * -0.015}px, ${offsetY * -0.04}px)`;
+
+            //title.style.transform = `translate(${offsetX * 0.015}px, ${offsetY * 0.02}px)`;
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flirtdogtor.</title>
+    <style>
+        body {
+            background-color: rgb(10, 10, 10);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        h1 {
+            color: aliceblue;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                filter: blur(2px);
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                filter: blur(0px);
+                transform: translateY(0);
+            }
+        }
+/* 1. Die Einblend-Animation auf den Container legen */
+    .logo {
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* 2. Das Bild bekommt die sanfte Transition */
+    .logo img {
+    width: 80px;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* 3. Beide Transforms in EINE Zeile kombinieren */
+    .logo:hover img {
+    transform: scale(1.1) rotate(-2deg);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.356))
+}
+    </style>
+</head>
+<body>
+    <h1></h1>
+    <div class="logo">
+        <img src="logo.png" alt="logo">
+    </div>
+</body>
+</html>
