@@ -8,7 +8,7 @@
 </head>
 <style>
     body {
-        background-color: rgb(4, 4, 4);
+        background-color: rgb(0, 0, 0);
             margin: 0;
             height: 100vh;
             display: flex;
@@ -18,22 +18,53 @@
     }
 
     .ss {
-        animation: fly 2s ease-in-out infinite alternate;
+        animation: fly 1.2s ease-in-out infinite alternate;
+    }
+
+    .arrow {
+        animation: arrows 1.2s ease-in-out infinite alternate;
+        position: fixed;
+        top: 20%;
+        scale: 0.1;
+        transform: translateX(-320%);
+        top: 0%;
+        rotate: 10deg;
     }
 
     @keyframes fly {
 
         0%  {
-            transform: rotate(5deg);
+            rotate: 2deg;
+            scale: 1;
         }
 
         100% {
-            transform: rotate(-5deg);
+        rotate: -2deg;
+        scale: 1.2;
         }
+        
+        
+        
+    }
+
+
+    
+    @keyframes arrows {
+
+        0%  {
+            scale: 0.12;
+        }
+
+        100% {
+        scale: 0.1;
+        }
+        
+        
         
     }
 </style>
 <body>
+    <img class="arrow" src="Arrow.png" alt="arrow">
     <img class="ss" src="ss.png" alt="loh">
 </body>
 </html>
